@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.recipeapp.R
+import com.recipeapp.api.RestServiceBuilder
 import com.recipeapp.databinding.FragmentDashboardBinding
+import com.recipeapp.ui.dashboard.api.RecipesApi
+import com.recipeapp.ui.dashboard.service.RecipesService
 
 class DashboardFragment : Fragment() {
 
@@ -22,7 +25,9 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        dashboardViewModel = ViewModelProvider(this)[DashboardViewModel::class.java]
+        val api = RestServiceBuilder.build(RecipesApi::class.java)
+        val service = RecipesService(api)
+        dashboardViewModel = DashboardViewModel(service)//ViewModelProvider(this)[DashboardViewModel::class.java]
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root

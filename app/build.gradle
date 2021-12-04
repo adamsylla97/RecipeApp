@@ -39,6 +39,8 @@ android {
 dependencies {
     def navigation_version = "2.4.0-beta02"
     def hilt_version = "2.40.4"
+    def gson_version = "2.8.7"
+    def retrofit2_version = "2.9.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
@@ -54,6 +56,11 @@ dependencies {
     //hilt (DI)
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    //retrofit
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
 
     testImplementation 'junit:junit:4.+'
 
