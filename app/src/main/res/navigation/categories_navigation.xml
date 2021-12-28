@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/categories"
+    app:startDestination="@id/categoriesFragment">
+
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.recipeapp.ui.categories.RecipeCategoriesFragment"
+        android:label="@string/title_categories"
+        tools:layout="@layout/fragment_recipe_categories" >
+        <action
+            android:id="@+id/toDetails"
+            app:destination="@id/categoryDetailsFragment"
+            app:popUpToSaveState="true"
+            app:restoreState="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryDetailsFragment"
+        android:name="com.recipeapp.ui.categories.categorydetails.CategoryDetailsFragment"
+        android:label="{categoryName} recipes" >
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/toRecipeDetails"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="com.recipeapp.ui.categories.recipedetails.RecipeDetailsFragment"
+        android:label="{recipeName}"
+        tools:layout="@layout/fragment_recipe_details" >
+        <argument
+            android:name="recipeName"
+            app:argType="string" />
+        <argument
+            android:name="recipeId"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
