@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.recipeapp.commons.BindableAdapter
 
 @BindingAdapter("app:data")
-fun <T> setRecyclerViewProperties(recyclerView: RecyclerView, data: T) {
-    if (recyclerView.adapter is BindableAdapter<*>) {
-        (recyclerView.adapter as BindableAdapter<T>).setData(data)
+fun <T> setRecyclerViewProperties(recyclerView: RecyclerView, data: T?) {
+    if(data != null) {
+        if (recyclerView.adapter is BindableAdapter<*>) {
+            (recyclerView.adapter as BindableAdapter<T>).setData(data)
+        }
     }
 }

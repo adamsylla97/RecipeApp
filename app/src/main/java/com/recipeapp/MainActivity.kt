@@ -37,5 +37,5 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
     }
 
-    private fun getTopLevelDestinations() = setOf(R.id.home, R.id.categoriesFragment, R.id.navigation_notifications)
+    private fun getTopLevelDestinations() = setOf(R.id.favoritesScreen, R.id.categoriesFragment, R.id.navigation_notifications)
 }

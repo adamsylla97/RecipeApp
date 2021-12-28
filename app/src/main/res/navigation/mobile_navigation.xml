@@ -6,12 +6,7 @@
     app:startDestination="@+id/categories">
 
     <include app:graph="@navigation/categories_navigation" />
-
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.recipeapp.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+    <include app:graph="@navigation/favorites_navigation" />
 
     <fragment
         android:id="@+id/navigation_notifications"

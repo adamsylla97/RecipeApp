@@ -15,7 +15,8 @@ class RecipeAppApplication: Application() {
             androidContext(this@RecipeAppApplication)
             modules(
                 AppModule.main,
-                AppModule.common
+                AppModule.common,
+                AppModule.favorites
             )
         }
     }
