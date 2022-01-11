@@ -26,20 +26,16 @@
             app:argType="string" />
         <action
             android:id="@+id/toRecipeDetails"
-            app:destination="@id/recipeDetailsFragment" />
+            app:destination="@id/recipe_details_navigation" >
+            <argument
+                android:name="recipeName"
+                app:argType="string" />
+            <argument
+                android:name="recipeId"
+                app:argType="string" />
+        </action>
     </fragment>
 
-    <fragment
-        android:id="@+id/recipeDetailsFragment"
-        android:name="com.recipeapp.ui.categories.recipedetails.RecipeDetailsFragment"
-        android:label="{recipeName}"
-        tools:layout="@layout/fragment_recipe_details" >
-        <argument
-            android:name="recipeName"
-            app:argType="string" />
-        <argument
-            android:name="recipeId"
-            app:argType="string" />
-    </fragment>
+   <include app:graph="@navigation/recipe_details_navigation" />
 
 </navigation>

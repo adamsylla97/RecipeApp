@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipe_details_navigation"
+    app:startDestination="@id/recipeDetailsFragment">
+
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="com.recipeapp.ui.categories.recipedetails.RecipeDetailsFragment"
+        android:label="{recipeName}"
+        tools:layout="@layout/fragment_recipe_details">
+        <argument
+            android:name="recipeName"
+            app:argType="string" />
+        <argument
+            android:name="recipeId"
+            app:argType="string" />
+        <action
+            android:id="@+id/toRecipeInstructions"
+            app:destination="@id/recipeInstructionsFragment" />
+        <action
+            android:id="@+id/showQrCode"
+            app:destination="@id/recipeQrCodeDialog" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recipeInstructionsFragment"
+        android:name="com.recipeapp.ui.categories.recipedetails.recipeinstructions.RecipeInstructionsFragment"
+        android:label="{recipeName}"
+        tools:layout="@layout/fragment_recipe_instructions">
+        <argument
+            android:name="recipeName"
+            app:argType="string" />
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/recipeQrCodeDialog"
+        android:name="com.recipeapp.ui.categories.recipedetails.sharerecipe.RecipeQrCodeDialog"
+        android:label="fragment_recipe_qr_code_dialog"
+        tools:layout="@layout/fragment_recipe_qr_code_dialog" />
+
+</navigation>

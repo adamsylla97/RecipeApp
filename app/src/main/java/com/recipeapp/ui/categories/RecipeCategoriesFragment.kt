@@ -1,14 +1,10 @@
 package com.recipeapp.ui.categories
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.recipeapp.R
 import com.recipeapp.databinding.FragmentRecipeCategoriesBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
