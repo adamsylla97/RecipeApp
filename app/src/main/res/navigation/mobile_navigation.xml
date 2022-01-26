@@ -9,8 +9,8 @@
     <include app:graph="@navigation/favorites_navigation" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.recipeapp.ui.notifications.NotificationsFragment"
+        android:id="@+id/myDishes"
+        android:name="com.recipeapp.ui.mydishes.MyDishesFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 

@@ -11,6 +11,8 @@ import com.recipeapp.ui.categories.categorydetails.CategoryDetailsViewModel
 import com.recipeapp.ui.categories.recipedetails.RecipeDetailsViewModel
 import com.recipeapp.ui.categories.service.RecipesService
 import com.recipeapp.ui.favorites.FavoritesViewModel
+import com.recipeapp.ui.mydishes.MyDishesService
+import com.recipeapp.ui.mydishes.MyDishesViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -26,7 +28,7 @@ object AppModule {
                 androidContext(),
                 FavoriteRecipesDataBase::class.java,
                 DATABASE_NAME
-            ).build()
+            ).fallbackToDestructiveMigration().build()
             db
         }
 
@@ -50,6 +52,16 @@ object AppModule {
             val service: RecipesService = get()
             val resourcesProvider: ResourcesProvider = get()
             RecipeDetailsViewModel(recipeId, service, resourcesProvider)
+        }
+
+        viewModel {
+            val service: MyDishesService = get()
+            MyDishesViewModel(service)
+        }
+
+        single {
+            val db: FavoriteRecipesDataBase = get()
+            MyDishesService(db)
         }
 
     }

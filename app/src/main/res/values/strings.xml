@@ -2,7 +2,7 @@
     <string name="app_name">RecipeApp</string>
     <string name="title_favorites">Favorites</string>
     <string name="title_categories">Categories</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">My dishes</string>
     <string name="menu_search">Search</string>
     <string name="share_recipe">Share %s</string>
 </resources>
