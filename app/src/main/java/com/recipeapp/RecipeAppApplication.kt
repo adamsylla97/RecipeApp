@@ -11,12 +11,12 @@ class RecipeAppApplication: Application() {
         super.onCreate()
 
         startKoin {
-            androidLogger()
             androidContext(this@RecipeAppApplication)
             modules(
                 AppModule.main,
                 AppModule.common,
-                AppModule.favorites
+                AppModule.favorites,
+                AppModule.myDish
             )
         }
     }

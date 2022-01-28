@@ -13,6 +13,8 @@ import com.recipeapp.ui.categories.service.RecipesService
 import com.recipeapp.ui.favorites.FavoritesViewModel
 import com.recipeapp.ui.mydishes.MyDishesService
 import com.recipeapp.ui.mydishes.MyDishesViewModel
+import com.recipeapp.ui.mydishes.adddish.AddDishViewModel
+import com.recipeapp.ui.mydishes.mydishdetails.MyDishDetailsViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -78,6 +80,17 @@ object AppModule {
         viewModel {
             val service: RecipesService = get()
             FavoritesViewModel(service)
+        }
+    }
+
+    val myDish = module {
+        viewModel {
+            val service: MyDishesService = get()
+            AddDishViewModel(service)
+        }
+        viewModel { (dishId: Int) ->
+            val service: MyDishesService = get()
+            MyDishDetailsViewModel(dishId, service)
         }
     }
 

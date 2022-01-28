@@ -9,14 +9,14 @@ import com.recipeapp.BR
 import com.recipeapp.R
 import com.recipeapp.commons.BindableAdapter
 
-class MyDishesAdapter: RecyclerView.Adapter<MyDishesAdapter.MyDishHolder>(), BindableAdapter<List<MyDish>> {
+class MyDishesAdapter(private val onClick: (String, Int) -> Unit): RecyclerView.Adapter<MyDishesAdapter.MyDishHolder>(), BindableAdapter<List<MyDish>> {
 
     private var myDishesItems: List<MyDish> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyDishHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: ViewDataBinding = DataBindingUtil.inflate(inflater, R.layout.mydish_item, parent, false)
-        return MyDishHolder(binding)
+        return MyDishHolder(binding, onClick)
     }
 
     override fun getItemCount(): Int = myDishesItems.size
@@ -30,11 +30,12 @@ class MyDishesAdapter: RecyclerView.Adapter<MyDishesAdapter.MyDishHolder>(), Bin
         notifyDataSetChanged()
     }
 
-    class MyDishHolder(val binding: ViewDataBinding): RecyclerView.ViewHolder(binding.root) {
+    class MyDishHolder(val binding: ViewDataBinding, private val onClick: (String, Int) -> Unit): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(myDish: MyDish) {
             binding.setVariable(BR.viewModel, myDish)
             binding.executePendingBindings()
+            binding.root.rootView.setOnClickListener { onClick(myDish.name, myDish.id) }
         }
 
     }

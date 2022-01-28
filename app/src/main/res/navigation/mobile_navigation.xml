@@ -12,6 +12,28 @@
         android:id="@+id/myDishes"
         android:name="com.recipeapp.ui.mydishes.MyDishesFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_my_dishes">
+        <action
+            android:id="@+id/toAddDish"
+            app:destination="@id/addDishFragment" />
+        <action
+            android:id="@+id/toDishDetails"
+            app:destination="@id/myDishDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addDishFragment"
+        android:name="com.recipeapp.ui.mydishes.adddish.AddDishFragment"
+        android:label="Add dish" />
+    <fragment
+        android:id="@+id/myDishDetailsFragment"
+        android:name="com.recipeapp.ui.mydishes.mydishdetails.MyDishDetailsFragment"
+        android:label="{dishName}">
+        <argument
+            android:name="dishName"
+            app:argType="string" />
+        <argument
+            android:name="dishId"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

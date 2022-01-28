@@ -1,6 +1,7 @@
 package com.recipeapp
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -8,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.recipeapp.databinding.ActivityMainBinding
+import com.recipeapp.ui.NoBottomNavigationViewDestinations
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +22,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpNavigation()
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (NoBottomNavigationViewDestinations.get().contains(destination.id)) {
+                hideBottomNavigationView()
+            } else {
+                showBottomNavigationView()
+            }
+        }
+    }
+
+    private fun hideBottomNavigationView() {
+        binding.navView.visibility = View.GONE
+    }
+
+    private fun showBottomNavigationView() {
+        binding.navView.visibility = View.VISIBLE
     }
 
     private fun setUpNavigation() {

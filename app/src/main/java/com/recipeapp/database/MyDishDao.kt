@@ -5,12 +5,13 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.recipeapp.ui.mydishes.MyDishEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MyDishDao {
 
     @Query("SELECT * FROM MyDishEntity")
-    fun getAllMyDishes(): List<MyDishEntity>
+    fun getAllMyDishes(): Flow<List<MyDishEntity>>
 
     @Insert
     fun insertMyDish(myDishEntity: MyDishEntity)
