@@ -9,6 +9,7 @@ import com.recipeapp.ui.categories.RecipeCategoriesViewModel
 import com.recipeapp.ui.categories.api.RecipesApi
 import com.recipeapp.ui.categories.categorydetails.CategoryDetailsViewModel
 import com.recipeapp.ui.categories.recipedetails.RecipeDetailsViewModel
+import com.recipeapp.ui.categories.recipesearch.RecipeSearchViewModel
 import com.recipeapp.ui.categories.service.RecipesService
 import com.recipeapp.ui.favorites.FavoritesViewModel
 import com.recipeapp.ui.mydishes.MyDishesService
@@ -64,6 +65,11 @@ object AppModule {
         single {
             val db: FavoriteRecipesDataBase = get()
             MyDishesService(db)
+        }
+
+        viewModel {
+            val service: RecipesService = get()
+            RecipeSearchViewModel(service)
         }
 
     }

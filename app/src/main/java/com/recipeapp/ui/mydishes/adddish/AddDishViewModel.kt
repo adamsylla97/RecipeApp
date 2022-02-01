@@ -12,12 +12,14 @@ class AddDishViewModel(private val service: MyDishesService): ViewModel() {
     val recipeName = MutableLiveData<String>()
     val instructions = MutableLiveData<String>()
     val ingredients = MutableLiveData<String>()
+    val photoUrl = MutableLiveData<String>()
 
     fun addDish() = viewModelScope.launch {
         service.addDish(MyDish(
             name = recipeName.value!!,
             instructions = instructions.value!!,
-            ingredients = ingredients.value!!
+            ingredients = ingredients.value!!,
+            photoUrl = photoUrl.value!!
         ))
     }
 

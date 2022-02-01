@@ -30,6 +30,9 @@ class RecipeCategoriesFragment : Fragment() {
             adapter = RecipeCategoriesAdapter{ onItemClick(it) }
             layoutManager = GridLayoutManager(requireContext(), 2)
         }
+        binding.searchFAB.setOnClickListener {
+            findNavController().navigate(RecipeCategoriesFragmentDirections.toSearch())
+        }
 
     }
 

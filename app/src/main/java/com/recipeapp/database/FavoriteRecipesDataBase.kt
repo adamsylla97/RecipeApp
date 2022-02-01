@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.recipeapp.ui.mydishes.MyDishEntity
 
-@Database(entities = [FavoriteRecipe::class, MyDishEntity::class], version = 3)
+@Database(entities = [FavoriteRecipe::class, MyDishEntity::class], version = 4)
 abstract class FavoriteRecipesDataBase: RoomDatabase() {
     abstract fun favoritesRecipesDao(): FavoriteRecipeDao
     abstract fun myDishDao(): MyDishDao
