@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">RecipeApp</string>
+    <string name="app_name">CrispyDuck</string>
     <string name="title_favorites">Favorites</string>
     <string name="title_categories">Categories</string>
     <string name="title_notifications">My dishes</string>
     <string name="menu_search">Search</string>
     <string name="share_recipe">Share %s</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
