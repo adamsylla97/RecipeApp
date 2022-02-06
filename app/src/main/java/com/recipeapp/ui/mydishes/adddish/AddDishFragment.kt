@@ -1,7 +1,9 @@
 package com.recipeapp.ui.mydishes.adddish
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -10,6 +12,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.navigation.fragment.findNavController
 import com.recipeapp.R
@@ -25,6 +29,13 @@ class AddDishFragment : Fragment() {
     private val REQUEST_IMAGE_CAPTURE = 1
     private val viewModel: AddDishViewModel by viewModel()
     private lateinit var photoPath: String
+
+    val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                dispatchTakePictureIntent()
+            }
+        }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentAddDishBinding.inflate(inflater, container, false).also {
@@ -42,7 +53,11 @@ class AddDishFragment : Fragment() {
             findNavController().popBackStack()
         }
         binding.makePhotoButton.setOnClickListener {
-            dispatchTakePictureIntent()
+            if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissionLauncher.launch(Manifest.permission.CAMERA)
+            } else {
+                dispatchTakePictureIntent()
+            }
         }
         viewModel.photoUrl.observe(viewLifecycleOwner) {
             binding.addDishImage.setImageURI(Uri.parse(it))

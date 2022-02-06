@@ -3,6 +3,7 @@ package com.recipeapp.ui.mydishes.adddish
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.recipeapp.commons.empty
 import com.recipeapp.ui.mydishes.MyDish
 import com.recipeapp.ui.mydishes.MyDishesService
 import kotlinx.coroutines.launch
@@ -16,10 +17,10 @@ class AddDishViewModel(private val service: MyDishesService): ViewModel() {
 
     fun addDish() = viewModelScope.launch {
         service.addDish(MyDish(
-            name = recipeName.value!!,
-            instructions = instructions.value!!,
-            ingredients = ingredients.value!!,
-            photoUrl = photoUrl.value!!
+            name = recipeName.value ?: String.empty,
+            instructions = instructions.value ?: String.empty,
+            ingredients = ingredients.value ?: String.empty,
+            photoUrl = photoUrl.value ?: String.empty
         ))
     }
 
