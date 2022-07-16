@@ -5,4 +5,5 @@
     <string name="title_notifications">My dishes</string>
     <string name="menu_search">Search</string>
     <string name="share_recipe">Share %s</string>
+    <string name="add_dish_text_button">Add</string>
 </resources>
