@@ -1,6 +1,8 @@
 package com.recipeapp.ui.categories.recipedetails
 
 import android.graphics.Bitmap
+import android.graphics.BlendMode
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.view.MenuItem
 import androidx.lifecycle.*
@@ -17,8 +19,7 @@ import kotlinx.coroutines.withContext
 
 class RecipeDetailsViewModel(
     private val recipeId: String,
-    private val service: RecipesService,
-    private val resourcesProvider: ResourcesProvider
+    private val service: RecipesService
 ) : ViewModel() {
 
     val recipeData = liveData(viewModelScope.coroutineContext) {
@@ -66,11 +67,11 @@ class RecipeDetailsViewModel(
         val isFavorite = service.isFavorite(recipeId)
         withContext(Dispatchers.Main) {
             val icon = if (isFavorite) {
-                resourcesProvider.getDrawable(R.drawable.ic_full_star)
+                R.drawable.ic_full_star
             } else {
-                resourcesProvider.getDrawable(R.drawable.ic_empty_star)
+                R.drawable.ic_empty_star
             }
-            menuItem.icon = icon
+            menuItem.setIcon(icon)
         }
     }
 

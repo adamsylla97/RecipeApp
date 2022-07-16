@@ -53,8 +53,7 @@ object AppModule {
 
         viewModel { (recipeId: String) ->
             val service: RecipesService = get()
-            val resourcesProvider: ResourcesProvider = get()
-            RecipeDetailsViewModel(recipeId, service, resourcesProvider)
+            RecipeDetailsViewModel(recipeId, service)
         }
 
         viewModel {

@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         appBarConfiguration = AppBarConfiguration(getTopLevelDestinations())
-//        setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean {
